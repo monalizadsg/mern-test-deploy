@@ -25,7 +25,7 @@ export default function SimpleTodosList() {
   const [todos, setTodoList] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:5000/activity/")
+      .get(`${process.env.REACT_APP_API_URL}/activity/`)
       .then((response) => {
         setTodoList(response.data);
       })
@@ -36,7 +36,7 @@ export default function SimpleTodosList() {
 
   const deleteTodo = (id) => {
     axios
-      .delete("http://localhost:5000/activity/delete/" + id)
+      .delete(`${process.env.REACT_APP_API_URL}/activity/delete/` + id)
       .then((response) => {
         console.log(response.data);
       });

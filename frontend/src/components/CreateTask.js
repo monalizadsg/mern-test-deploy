@@ -10,7 +10,7 @@ export default function CreateTask() {
     const activityvar = { activity: activity };
 
     axios
-      .post("http://localhost:5000/activity/add", activityvar)
+      .post(`${process.env.REACT_APP_API_URL}/activity/add`, activityvar)
       .then((res) => {
         //this refreshes the page - instead can use hook use navigate
         window.location = "/";

@@ -10,7 +10,7 @@ export default function EditTask() {
   const [activity, setOnChangeActivity] = useState([]);
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/activity/${id}`)
+      .get(`${process.env.REACT_APP_API_URL}/activity/${id}`)
       .then((response) => {
         setOnChangeActivity(response.data.activity);
       })
@@ -24,11 +24,14 @@ export default function EditTask() {
     const activityvar = { activity: activity };
     console.log(activityvar);
 
-    console.log(`http://localhost:5000/activity/update/${id}`);
+    console.log(`${process.env.REACT_APP_API_URL}/activity/update/${id}`);
     // console.log(e)
 
     axios
-      .post(`http://localhost:5000/activity/update/${id}`, activityvar)
+      .post(
+        `${process.env.REACT_APP_API_URL}/activity/update/${id}`,
+        activityvar
+      )
       .then((res) => {
         window.location = "/";
       });
